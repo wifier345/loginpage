@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header {
+            background-color: #ff4500;
+            color: #333;
+            text-align: center;
+            padding: 10px 0px 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .login-box,
+        .price-box,
+        .contact-box {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 50px auto;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .login-box h1,
+        .price-box h1,
+        .contact-box h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-box input {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .login-box button {
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .login-box button:hover {
+            background-color: #d33b03;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .toggle-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-buttons button.active {
+            background-color: #d33b03;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #ff4500;
+            padding: 0px 10px 10px 10px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        .navbar a:hover {
+            background-color: #e03e00;
+            border-radius: 4px;
+        }
+
+        .price-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .price-box ul li {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .contact-box p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        /* Light and Dark Mode */
+        .dark-mode {
+            background-color: #333;
+            color: #333;
+        }
+
+        .dark-mode .header,
+        .dark-mode .navbar {
+            background-color: #87ceeb;
+            color: #333;
+        }
+
+        .dark-mode .navbar a:hover {
+            background-color: #4087a3;
+        }
+
+        .dark-mode .login-box,
+        .dark-mode .price-box,
+        .dark-mode .contact-box {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .dark-mode .login-box button {
+            background-color: #87ceeb;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: row;
+            }
+
+            .login-box,
+            .price-box,
+            .contact-box {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            .contact-box p {
+             text-align: left;   
+            }
+
+            .login-box h1,
+            .price-box h1,
+            .contact-box h1 {
+                font-size: 20px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: right;
+            }
+
+            .switch {
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <script>
+        document.login.username.focus();
+
+        function hashPassword(password) {
+            return btoa(password); // Example hashing, replace with secure hash in production
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const formType = document.querySelector('.toggle-buttons button.active').dataset.type;
+            if (formType === 'member') {
+                const username = document.querySelector('input[name="username"]').value;
+                const password = document.querySelector('input[name="password"]').value;
+                const hashedPassword = hashPassword(password);
+
+                document.querySelector('input[name="password"]').value = hashedPassword;
+            }
+            event.target.submit();
+        }
+
+        function setpass() {
+            var user = username.value
+            password.value = user;
+        }
+
+        function toggleForm(type) {
+            const memberFields = document.querySelector('#member-fields');
+            const voucherFields = document.querySelector('#voucher-fields');
+
+            if (type === 'member') {
+                memberFields.style.display = 'block';
+                voucherFields.style.display = 'none';
+                username.focus();
+                username.onchange = "";
+            } else {
+                memberFields.style.display = 'none';
+                voucherFields.style.display = 'block';
+                username.focus();
+                username.onchange = setpass;
+            }
+
+            document.querySelectorAll('.toggle-buttons button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.toggle-buttons button[data-type="${type}"]`).classList.add('active');
+        }
+
+        username.onchange = setpass;
+
+        function toggleMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            toggleForm('member'); // Set default form to Member
+        });
+    </script>
+</head>
+
+<body>  
+    <div class="header">
+        <h1>Abadi<i style="color: #fff;">Konek</i></h1>
+    </div>
+    
+    <div class="navbar">
+        <a href="#login">Login</a>
+        <a href="#prices">Voucher</a>
+        <a href="#contact">Kontak</a>
+        <a href="https://smkn1rengat.sch.id/">Sekolah</a>
+        <label class="switch">
+            <input type="checkbox" onclick="toggleMode()">
+            <span class="slider"></span>
+        </label>
+    </div>
+    
+    ${if chap-id}
+    <form name="sendin" action="${link-login-only}" method="post">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="${link-orig}" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+            function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+            }
+    </script>
+    ${endif}
+
+    <div class="container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <div class="toggle-buttons">
+                <button data-type="member" onclick="toggleForm('member')" class="active">Member</button>
+                <button data-type="voucher" onclick="toggleForm('voucher')">Voucher</button>
+            </div>
+            <form action="process_login.php" method="post" onsubmit="handleLogin(event)">
+                <div id="member-fields">
+                    <input type="text" name="username" placeholder="Username" value="$(username)" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div id="voucher-fields" style="display: none;">
+                    <input type="text" name="voucher" placeholder="Voucher Code" value="$(username)" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="prices" class="price-box">
+            <h1>Voucher</h1>
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr>
+                        <th style="padding: 10px; border: 1px solid #ccc;">Paket</th>
+                        <th style="padding: 10px; border: 1px solid #ccc;">Aktif</th>
+                        <th style="padding: 10px; border: 1px solid #ccc;">Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">1H</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">1 Hari</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">Rp. 3.000</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">2H</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">2 Hari</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">Rp. 4.000</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">1M</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">7 Hari</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">Rp. 10.000</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">3M</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">21 Hari</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">Rp. 30.000</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">1B</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">30 Hari</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">Rp. 40.000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>‼️Masa aktif disesuaikan berdasarkan jam pembelian <b>BUKAN</b> hari beli‼️</p>
+        </div>        
+
+        <div id="contact" class="contact-box">
+            <h1>Kontak</h1>
+            <p>Nama: PT AbadiKonek</p>
+            <p>Alamat: Jl. Teknologi No.00023, preba</p>
+            <p>Nomor Telepon: +62 812-0001-0002</p>
+            <p>Email: <i>ahmadakbil20@gmail.com</i></p>
+            <p>Sosial Media: <a href="https://www.youtube.com/@Forto.me-v1">klik disini</a></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Made with tears by <i style="font-weight: bold;">Akbil🛜</i></p>
+        $(if error)<br /><div style="color: #FF8080; font-size: 9px">$(error)</div>$(endif)
+        <p>Powered by coffee</p>
+    </div>
+
+</body>
+
+</html>
